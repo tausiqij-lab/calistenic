@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoBumi V2 - Edukasi & Daur Ulang</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .glass {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- NAVBAR / HEADER -->
+  <header class="sticky top-0 z-50 glass border-b border-slate-700/50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="showPage('home')">
+        <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-xl shadow-lg shadow-emerald-500/30">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <span class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
+          EcoBumi V2
+        </span>
+      </div>
+
+      <!-- NAV BUTTONS -->
+      <nav class="flex space-x-1 sm:space-x-2">
+        <button id="nav-home" onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-emerald-600 text-white shadow-md">
+          <i class="fa-solid fa-house mr-1 sm:mr-2"></i><span class="hidden sm:inline">Beranda</span>
+        </button>
+        <button id="nav-edukasi" onclick="showPage('edukasi')" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all duration-200">
+          <i class="fa-solid fa-book-open mr-1 sm:mr-2"></i><span class="hidden sm:inline">Edukasi</span>
+        </button>
+        <button id="nav-kuis" onclick="showPage('kuis')" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all duration-200">
+          <i class="fa-solid fa-circle-question mr-1 sm:mr-2"></i><span class="hidden sm:inline">Kuis</span>
+        </button>
+        <button id="nav-game" onclick="showPage('game')" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all duration-200">
+          <i class="fa-solid fa-gamepad mr-1 sm:mr-2"></i><span class="hidden sm:inline">Game</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow relative">
+
+    <!-- PAGE 1: BERANDA (HOME) -->
+    <section id="page-home" class="page-section relative min-h-[calc(100vh-4rem)] flex items-center justify-center p-6 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+        
+        <!-- BADGE KARYA -->
+        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-emerald-500/30 text-emerald-300 text-sm font-semibold shadow-xl">
+          <i class="fa-solid fa-user-graduate"></i>
+          <span>Karya: Muhammad Jaji Tausiqi</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Portal Kesadaran Lingkungan & <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Daur Ulang</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Selamat datang! Mari pelajari cara menjaga kelestarian bumi melalui pemahaman pengolahan sampah, penerapan konsep 5R, kuis pemahaman, dan mini-game interaktif.
+        </p>
+
+        <!-- DASHBOARD MENU CARDS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 text-left">
+          <div onclick="showPage('edukasi')" class="glass-card p-6 rounded-2xl border border-slate-700/50 hover:border-emerald-500/50 transition duration-300 cursor-pointer transform hover:-translate-y-1 shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Materi Edukasi</h3>
+            <p class="text-slate-400 text-sm">Pelajari konsep 5R, cara pemilahan 4 jenis sampah, dan dampak polusi plastik.</p>
+          </div>
+
+          <div onclick="showPage('kuis')" class="glass-card p-6 rounded-2xl border border-slate-700/50 hover:border-teal-500/50 transition duration-300 cursor-pointer transform hover:-translate-y-1 shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-2xl mb-4">
+              <i class="fa-solid fa-clipboard-question"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Kuis Interaktif</h3>
+            <p class="text-slate-400 text-sm">Uji sejauh mana pemahaman ekologismu melalui 10 soal kuis pilihan ganda.</p>
+          </div>
+
+          <div onclick="showPage('game')" class="glass-card p-6 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 transition duration-300 cursor-pointer transform hover:-translate-y-1 shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-4">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Game Pilah Sampah</h3>
+            <p class="text-slate-400 text-sm">Latih refleksmu memasukkan jenis sampah ke dalam tong sampah yang sesuai!</p>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <button onclick="showPage('edukasi')" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition duration-200 transform hover:scale-105">
+            Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 2: EDUKASI -->
+    <section id="page-edukasi" class="page-section hidden max-w-6xl mx-auto px-4 py-10 space-y-12">
+      
+      <!-- JUDUL -->
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Edukasi Kesadaran Lingkungan</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto">Memahami prinsip dasar pengelolaan lingkungan hidup untuk masa depan bumi yang berkelanjutan.</p>
+      </div>
+
+      <!-- SEKSI 1: KONSEP 5R -->
+      <div class="bg-slate-800/60 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl">
+        <h3 class="text-2xl font-bold text-emerald-400 mb-6 flex items-center">
+          <i class="fa-solid fa-recycle mr-3"></i> Konsep 5R (Pengelolaan Sampah Modern)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/40 transition">
+            <div class="text-emerald-400 font-bold text-xl mb-1">1. Refuse</div>
+            <div class="text-xs font-semibold text-emerald-200/70 mb-2 uppercase tracking-wider">Menolak</div>
+            <p class="text-slate-300 text-sm leading-relaxed">Menolak produk sekali pakai atau barang yang menghasilkan limbah tak perlu.</p>
+          </div>
+          <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/40 transition">
+            <div class="text-emerald-400 font-bold text-xl mb-1">2. Reduce</div>
+            <div class="text-xs font-semibold text-emerald-200/70 mb-2 uppercase tracking-wider">Mengurangi</div>
+            <p class="text-slate-300 text-sm leading-relaxed">Mengurangi pemakaian barang berpotensi sampah dalam aktivitas sehari-hari.</p>
+          </div>
+          <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/40 transition">
+            <div class="text-emerald-400 font-bold text-xl mb-1">3. Reuse</div>
+            <div class="text-xs font-semibold text-emerald-200/70 mb-2 uppercase tracking-wider">Menggunakan Kembali</div>
+            <p class="text-slate-300 text-sm leading-relaxed">Memakai ulang wadah atau kantong belanja secara berulang-ulang.</p>
+          </div>
+          <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/40 transition">
+            <div class="text-emerald-400 font-bold text-xl mb-1">4. Repurpose</div>
+            <div class="text-xs font-semibold text-emerald-200/70 mb-2 uppercase tracking-wider">Alih Fungsi</div>
+            <p class="text-slate-300 text-sm leading-relaxed">Mengubah barang bekas menjadi benda berguna lain, misalnya pot tanaman.</p>
+          </div>
+          <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/40 transition">
+            <div class="text-emerald-400 font-bold text-xl mb-1">5. Recycle</div>
+            <div class="text-xs font-semibold text-emerald-200/70 mb-2 uppercase tracking-wider">Mendaur Ulang</div>
+            <p class="text-slate-300 text-sm leading-relaxed">Mendaur ulang bahan limbah mentah menjadi produk baru yang bernilai.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEKSI 2: PANDUAN MEMILAH SAMPAH -->
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-trash-can-arrow-up mr-3 text-teal-400"></i> Panduan Memilah 4 Jenis Sampah
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- ORGANIK -->
+          <div class="bg-slate-800/80 rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+            <div class="bg-emerald-600/90 p-4 text-center">
+              <i class="fa-solid fa-leaf text-3xl text-white mb-1"></i>
+              <h4 class="text-xl font-bold text-white">1. Sampah Organik</h4>
+            </div>
+            <div class="p-5 space-y-3">
+              <p class="text-slate-300 text-sm">Sampah cair/padat yang berasal dari sisa makhluk hidup dan mudah terurai secara alami.</p>
+              <div class="bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                <span class="font-bold text-emerald-400">Contoh:</span> Sisa makanan, daun kering, kulit buah, sisa sayuran.
+              </div>
+            </div>
+          </div>
+
+          <!-- ANORGANIK -->
+          <div class="bg-slate-800/80 rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
+            <div class="bg-amber-600/90 p-4 text-center">
+              <i class="fa-solid fa-bottle-water text-3xl text-white mb-1"></i>
+              <h4 class="text-xl font-bold text-white">2. Sampah Anorganik</h4>
+            </div>
+            <div class="p-5 space-y-3">
+              <p class="text-slate-300 text-sm">Sampah buatan manusia yang sangat sulit atau butuh waktu lama untuk terurai.</p>
+              <div class="bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                <span class="font-bold text-amber-400">Contoh:</span> Botol plastik, kantong plastik, kaleng minuman, kemasan saset.
+              </div>
+            </div>
+          </div>
+
+          <!-- KERTAS -->
+          <div class="bg-slate-800/80 rounded-2xl overflow-hidden border border-blue-500/30 shadow-lg">
+            <div class="bg-blue-600/90 p-4 text-center">
+              <i class="fa-solid fa-newspaper text-3xl text-white mb-1"></i>
+              <h4 class="text-xl font-bold text-white">3. Sampah Kertas</h4>
+            </div>
+            <div class="p-5 space-y-3">
+              <p class="text-slate-300 text-sm">Limbah berbahan dasar kertas/kardus yang bersih dan kering untuk didaur ulang.</p>
+              <div class="bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                <span class="font-bold text-blue-400">Contoh:</span> Kardus bekas, koran, majalah, kertas HVS bekas.
+              </div>
+            </div>
+          </div>
+
+          <!-- B3 -->
+          <div class="bg-slate-800/80 rounded-2xl overflow-hidden border border-rose-500/30 shadow-lg">
+            <div class="bg-rose-600/90 p-4 text-center">
+              <i class="fa-solid fa-triangle-exclamation text-3xl text-white mb-1"></i>
+              <h4 class="text-xl font-bold text-white">4. Sampah B3</h4>
+            </div>
+            <div class="p-5 space-y-3">
+              <p class="text-slate-300 text-sm">Bahan Berbahaya & Beracun yang memerlukan penanganan khusus demi keamanan.</p>
+              <div class="bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                <span class="font-bold text-rose-400">Contoh:</span> Baterai bekas, lampu neon, botol racun serangga, obat kedaluwarsa.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SEKSI 3: POLUSI PLASTIK & JEJAK KARBON -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700 space-y-3">
+          <h4 class="text-xl font-bold text-rose-400 flex items-center">
+            <i class="fa-solid fa-skull-crossbones mr-2"></i> Bahaya Polusi Plastik
+          </h4>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Plastik sekali pakai dapat bertahan ratusan tahun di lingkungan tanpa terurai sepenuhnya, melainkan hancur menjadi partikel mikroskopis yang disebut <strong>mikroplastik</strong>. Mikroplastik ini mencemari lautan, dikonsumsi oleh hewan laut, dan akhirnya masuk ke dalam rantai makanan manusia.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700 space-y-3">
+          <h4 class="text-xl font-bold text-teal-400 flex items-center">
+            <i class="fa-solid fa-smog mr-2"></i> Memahami Jejak Karbon
+          </h4>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            <strong>Jejak Karbon (Carbon Footprint)</strong> adalah total emisi gas rumah kaca yang dihasilkan oleh aktivitas sehari-hari manusia, seperti menggunakan kendaraan bermotor, penggunaan listrik secara berlebihan, serta konsumsi produk industri yang menyumbang pemanasan global.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PAGE 3: KUIS INTERAKTIF (10 PERTANYAAN) -->
+    <section id="page-kuis" class="page-section hidden max-w-3xl mx-auto px-4 py-10 space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-extrabold text-white">Kuis Pengetahuan Lingkungan</h2>
+        <p class="text-slate-400 text-sm">Uji pemahamanmu dengan menjawab 10 pertanyaan di bawah ini!</p>
+      </div>
+
+      <div class="bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative">
+        
+        <!-- QUIZ CONTAINER -->
+        <div id="quiz-container" class="space-y-6">
+          <div class="flex items-center justify-between text-sm text-slate-400 border-b border-slate-700 pb-4">
+            <span id="quiz-progress" class="font-semibold text-emerald-400">Pertanyaan 1 dari 10</span>
+            <span id="quiz-score-live" class="font-medium">Skor: 0</span>
+          </div>
+
+          <h3 id="quiz-question" class="text-xl font-bold text-white leading-relaxed">
+            Loading Pertanyaan...
+          </h3>
+
+          <div id="quiz-options" class="grid grid-cols-1 gap-3">
+            <!-- OPTIONS WILL BE DYNAMICALLY LOADED VIA JS -->
+          </div>
+
+          <div id="quiz-feedback" class="hidden p-4 rounded-xl text-sm font-medium text-center"></div>
+        </div>
+
+        <!-- QUIZ RESULT SCREEN (HIDDEN INITIALLY) -->
+        <div id="quiz-result" class="hidden text-center py-8 space-y-6">
+          <div class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-4xl mx-auto shadow-xl">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-white">Kuis Selesai!</h3>
+          <p class="text-slate-300 text-lg">Skor Akhir Anda: <span id="final-score" class="font-extrabold text-emerald-400 text-2xl">0</span> / 10</p>
+          <p id="final-message" class="text-slate-400 text-sm max-w-md mx-auto"></p>
+          <button onclick="restartQuiz()" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-bold rounded-xl shadow-lg transition">
+            <i class="fa-solid fa-rotate-right mr-2"></i> Ulangi Kuis
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 4: GAME PILAH SAMPAH -->
+    <section id="page-game" class="page-section hidden max-w-4xl mx-auto px-4 py-10 space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-extrabold text-white">Mini Game: Pilah Sampah</h2>
+        <p class="text-slate-400 text-sm">Pilih tong sampah yang tepat untuk setiap item yang muncul!</p>
+      </div>
+
+      <!-- CARA BERMAIN BOX -->
+      <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700 text-slate-300 text-sm flex items-start space-x-3">
+        <i class="fa-solid fa-circle-info text-cyan-400 text-xl mt-0.5"></i>
+        <div>
+          <strong class="text-white">Cara Bermain:</strong> Barang sampah akan muncul di kotak tengah. Klik salah satu tombol tong sampah (Organik, Anorganik, Kertas, B3) yang menurutmu sesuai sebelum ronde selesai.
+        </div>
+      </div>
+
+      <!-- GAME BOARD CONTAINER -->
+      <div class="bg-slate-800/80 rounded-2xl p-6 border border-slate-700 shadow-2xl space-y-8">
+        
+        <!-- HUD HEADER -->
+        <div class="flex items-center justify-between text-slate-300 bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
+          <div>Ronde: <span id="game-round" class="font-bold text-white">1</span> / 10</div>
+          <div>Skor: <span id="game-score" class="font-bold text-emerald-400 text-xl">0</span></div>
+        </div>
+
+        <!-- ITEM CONTAINER -->
+        <div id="game-active-area" class="text-center py-6 space-y-4 bg-slate-900/80 rounded-2xl border border-slate-700/50">
+          <div id="item-icon-container" class="w-24 h-24 rounded-2xl bg-slate-800 mx-auto flex items-center justify-center text-5xl shadow-inner text-emerald-400">
+            <i id="item-icon" class="fa-solid fa-bottle-water"></i>
+          </div>
+          <h3 id="item-name" class="text-2xl font-extrabold text-white">Botol Plastik Bekas</h3>
+          <p id="game-feedback" class="text-sm h-6 font-semibold"></p>
+        </div>
+
+        <!-- TRASH BINS BUTTONS -->
+        <div id="game-bins" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <button onclick="checkAnswer('organik')" class="p-4 rounded-xl bg-emerald-600/80 hover:bg-emerald-600 text-white font-bold transition flex flex-col items-center space-y-2 border border-emerald-500 shadow-lg hover:scale-105 transform">
+            <i class="fa-solid fa-leaf text-2xl"></i>
+            <span>Organik</span>
+          </button>
+
+          <button onclick="checkAnswer('anorganik')" class="p-4 rounded-xl bg-amber-600/80 hover:bg-amber-600 text-white font-bold transition flex flex-col items-center space-y-2 border border-amber-500 shadow-lg hover:scale-105 transform">
+            <i class="fa-solid fa-bottle-water text-2xl"></i>
+            <span>Anorganik</span>
+          </button>
+
+          <button onclick="checkAnswer('kertas')" class="p-4 rounded-xl bg-blue-600/80 hover:bg-blue-600 text-white font-bold transition flex flex-col items-center space-y-2 border border-blue-500 shadow-lg hover:scale-105 transform">
+            <i class="fa-solid fa-newspaper text-2xl"></i>
+            <span>Kertas</span>
+          </button>
+
+          <button onclick="checkAnswer('b3')" class="p-4 rounded-xl bg-rose-600/80 hover:bg-rose-600 text-white font-bold transition flex flex-col items-center space-y-2 border border-rose-500 shadow-lg hover:scale-105 transform">
+            <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
+            <span>B3</span>
+          </button>
+        </div>
+
+        <!-- GAME OVER OVERLAY -->
+        <div id="game-over" class="hidden text-center py-8 space-y-6">
+          <h3 class="text-3xl font-extrabold text-white">Game Selesai!</h3>
+          <p class="text-slate-300 text-lg">Skor Akhir Game: <span id="game-final-score" class="text-emerald-400 font-bold text-2xl">0</span></p>
+          <button onclick="restartGame()" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-bold rounded-xl shadow-lg transition">
+            <i class="fa-solid fa-rotate-right mr-2"></i> Main Lagi
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-slate-500 text-sm">
+    <p>&copy; 2026 EcoBumi V2 - Dibuat oleh <span class="text-slate-300 font-semibold">Muhammad Jaji Tausiqi</span></p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- NAVIGASI PAGE (SPA) ---
+    function showPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      document.getElementById('page-' + pageId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-md');
+        btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+      });
+
+      const activeBtn = document.getElementById('nav-' + pageId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-emerald-600', 'text-white', 'shadow-md');
+        activeBtn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- KUIS LOGIC ---
+    const quizQuestions = [
+      {
+        q: "Apa singkatan dari konsep 5R dalam pengelolaan sampah?",
+        options: [
+          "Refuse, Reduce, Reuse, Repurpose, Recycle",
+          "Remove, Repeat, Return, Replace, Recycle",
+          "Rebuild, Refuse, Reduce, Reopen, Recycle",
+          "Rethink, Repair, Reduce, Remove, Reuse"
+        ],
+        answer: 0
+      },
+      {
+        q: "Daun kering dan sisa sisa sayuran termasuk dalam jenis sampah apa?",
+        options: ["Anorganik", "B3", "Organik", "Kertas"],
+        answer: 2
+      },
+      {
+        q: "Botol plastik bekas air mineral termasuk ke dalam kategori sampah...",
+        options: ["Organik", "Anorganik", "B3", "Radioaktif"],
+        answer: 1
+      },
+      {
+        q: "Manakah di bawah ini yang merupakan contoh sampah B3 (Bahan Berbahaya & Beracun)?",
+        options: ["Kardus bekas", "Kulit pisang", "Baterai bekas", "Kaleng kornet"],
+        answer: 2
+      },
+      {
+        q: "Tindakan menolak penggunaan kantong plastik sekali pakai saat berbelanja adalah penerapan dari...",
+        options: ["Recycle", "Refuse", "Repurpose", "Reuse"],
+        answer: 1
+      },
+      {
+        q: "Apa bahaya utama dari partikel mikroplastik di lautan?",
+        options: [
+          "Membuat air laut menjadi terasa manis",
+          "Termakan oleh biota laut dan masuk ke rantai makanan manusia",
+          "Membuat terumbu karang tumbuh terlalu cepat",
+          "Meningkatkan kadar garam di samudra"
+        ],
+        answer: 1
+      },
+      {
+        q: "Mengubah kaleng cat bekas menjadi pot bunga tanaman adalah contoh penerapan...",
+        options: ["Repurpose (Alih fungsi)", "Refuse", "Recycle", "Reduce"],
+        answer: 0
+      },
+      {
+        q: "Apa yang dimaksud dengan 'Jejak Karbon' (Carbon Footprint)?",
+        options: [
+          "Jejak kaki yang tertinggal di tanah hitam",
+          "Total emisi gas rumah kaca yang dihasilkan dari aktivitas manusia",
+          "Karbon aktif yang digunakan untuk menyaring air baku",
+          "Sisa pembakaran kayu bakar di dalam hutan"
+        ],
+        answer: 1
+      },
+      {
+        q: "Lampu neon bekas dan botol racun serangga sebaiknya dibuang ke tong sampah berwarna...",
+        options: ["Hijau (Organik)", "Kuning (Anorganik)", "Merah (B3)", "Biru (Kertas)"],
+        answer: 2
+      },
+      {
+        q: "Mengapa kertas kardus bekas dipisahkan khusus dari sampah organik basah?",
+        options: [
+          "Agar kardus tetap kering sehingga mudah didaur ulang kembali",
+          "Karena kardus tidak bisa hancur selamanya",
+          "Agar kardus bisa langsung dimakan oleh hewan",
+          "Karena kardus mengandung bahan peledak"
+        ],
+        answer: 0
+      }
+    ];
+
+    let currentQ = 0;
+    let quizScore = 0;
+
+    function loadQuestion() {
+      const q = quizQuestions[currentQ];
+      document.getElementById('quiz-progress').innerText = `Pertanyaan ${currentQ + 1} dari ${quizQuestions.length}`;
+      document.getElementById('quiz-score-live').innerText = `Skor: ${quizScore}`;
+      document.getElementById('quiz-question').innerText = q.q;
+
+      const optsDiv = document.getElementById('quiz-options');
+      optsDiv.innerHTML = '';
+
+      document.getElementById('quiz-feedback').classList.add('hidden');
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-xl bg-slate-900/80 hover:bg-slate-700 border border-slate-700/60 text-slate-200 font-medium transition duration-200 flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-500"></i>`;
+        btn.onclick = () => selectQuizOption(idx);
+        optsDiv.appendChild(btn);
+      });
+    }
+
+    function selectQuizOption(selectedIdx) {
+      const q = quizQuestions[currentQ];
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.classList.remove('hidden');
+
+      if (selectedIdx === q.answer) {
+        quizScore++;
+        feedback.className = "p-4 rounded-xl text-sm font-medium text-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+        feedback.innerText = "Jawaban Benar! 🎉";
+      } else {
+        feedback.className = "p-4 rounded-xl text-sm font-medium text-center bg-rose-500/20 text-rose-400 border border-rose-500/30";
+        feedback.innerText = `Kurang Tepat. Jawaban yang benar: ${q.options[q.answer]}`;
+      }
+
+      setTimeout(() => {
+        currentQ++;
+        if (currentQ < quizQuestions.length) {
+          loadQuestion();
+        } else {
+          showQuizResult();
+        }
+      }, 1500);
+    }
+
+    function showQuizResult() {
+      document.getElementById('quiz-container').classList.add('hidden');
+      document.getElementById('quiz-result').classList.remove('hidden');
+      document.getElementById('final-score').innerText = quizScore;
+
+      const msg = document.getElementById('final-message');
+      if (quizScore >= 8) {
+        msg.innerText = "Luar biasa! Kamu sudah sangat memahami konsep kesadaran lingkungan dan pemilahan sampah.";
+      } else if (quizScore >= 5) {
+        msg.innerText = "Bagus! Pemahamanmu sudah lumayan, coba baca lagi materi edukasi untuk hasil sempurna.";
+      } else {
+        msg.innerText = "Jangan berkecil hati! Yuk pelajari kembali materi edukasi dan coba lagi kuis ini.";
+      }
+    }
+
+    function restartQuiz() {
+      currentQ = 0;
+      quizScore = 0;
+      document.getElementById('quiz-container').classList.remove('hidden');
+      document.getElementById('quiz-result').classList.add('hidden');
+      loadQuestion();
+    }
+
+    // --- GAME PILAH SAMPAH LOGIC ---
+    const gameItems = [
+      { name: "Botol Plastik Bekas", type: "anorganik", icon: "fa-bottle-water" },
+      { name: "Sisa Apel & Apel Busuk", type: "organik", icon: "fa-apple-whole" },
+      { name: "Kardus Paket Bekas", type: "kertas", icon: "fa-box-archive" },
+      { name: "Baterai Bekas", type: "b3", icon: "fa-battery-quarter" },
+      { name: "Daun Kering Gugur", type: "organik", icon: "fa-leaf" },
+      { name: "Kaleng Minuman Soda", type: "anorganik", icon: "fa-prescription-bottle" },
+      { name: "Koran Bekas", type: "kertas", icon: "fa-newspaper" },
+      { name: "Lampu Neon Bekas", type: "b3", icon: "fa-lightbulb" },
+      { name: "Kulit Pisang", type: "organik", icon: "fa-lemon" },
+      { name: "Kantong Plastik Kresek", type: "anorganik", icon: "fa-bag-shopping" }
+    ];
+
+    let gameRound = 0;
+    let gameScore = 0;
+
+    function loadGameRound() {
+      if (gameRound >= gameItems.length) {
+        endGame();
+        return;
+      }
+
+      const item = gameItems[gameRound];
+      document.getElementById('game-round').innerText = gameRound + 1;
+      document.getElementById('game-score').innerText = gameScore;
+      document.getElementById('item-name').innerText = item.name;
+      document.getElementById('item-icon').className = `fa-solid ${item.icon}`;
+      document.getElementById('game-feedback').innerText = '';
+    }
+
+    function checkAnswer(chosenType) {
+      const item = gameItems[gameRound];
+      const fb = document.getElementById('game-feedback');
+
+      if (chosenType === item.type) {
+        gameScore += 10;
+        fb.className = "text-sm h-6 font-semibold text-emerald-400";
+        fb.innerText = "Tepat Sekali! +10 Poin";
+      } else {
+        fb.className = "text-sm h-6 font-semibold text-rose-400";
+        fb.innerText = `Salah! Ini adalah Sampah ${item.type.toUpperCase()}`;
+      }
+
+      setTimeout(() => {
+        gameRound++;
+        loadGameRound();
+      }, 1000);
+    }
+
+    function endGame() {
+      document.getElementById('game-active-area').classList.add('hidden');
+      document.getElementById('game-bins').classList.add('hidden');
+      document.getElementById('game-over').classList.remove('hidden');
+      document.getElementById('game-final-score').innerText = gameScore;
+    }
+
+    function restartGame() {
+      gameRound = 0;
+      gameScore = 0;
+      document.getElementById('game-active-area').classList.remove('hidden');
+      document.getElementById('game-bins').classList.remove('hidden');
+      document.getElementById('game-over').classList.add('hidden');
+      loadGameRound();
+    }
+
+    // INIT
+    window.onload = () => {
+      loadQuestion();
+      loadGameRound();
+    };
+  </script>
+</body>
+</html>
